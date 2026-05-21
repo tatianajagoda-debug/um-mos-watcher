@@ -215,13 +215,15 @@ def send_telegram(text: str) -> None:
 
 
 def format_message(slots: list[dict], total_open: int) -> str:
-    lines = [f"<b>🎫 Новые слоты на um.mos.ru — {len(slots)} шт.</b>"]
+    # Deduplicate by excursion (slug) — one line per excursion, no times
+    unique: dict[str, dict] = {}
+    for s in slots:
+        unique.setdefault(s["slug"], s)
+    items = list(unique.values())
+    lines = [f"<b>🎫 Новые экскурсии на um.mos.ru — {len(items)} шт.</b>"]
     lines.append(f"Всего открыта запись: {total_open}")
     lines.append("")
-    for s in slots[:25]:  # cap to avoid 4096-char limit
-        free_part = ""
-        if s["free"] is not None:
-            free_part = f"  🪑 {s['free']}/{s['total']}"
+    for s in items[:40]:
         title_html = (
             s["title"]
             .replace("&", "&amp;")
@@ -229,10 +231,9 @@ def format_message(slots: list[dict], total_open: int) -> str:
             .replace(">", "&gt;")
         )
         lines.append(f"• <a href=\"{s['url']}\">{title_html}</a>")
-        lines.append(f"  📅 {s['date']}{free_part}")
-    if len(slots) > 25:
+    if len(items) > 40:
         lines.append("")
-        lines.append(f"…и ещё {len(slots) - 25} (см. сайт)")
+        lines.append(f"…и ещё {len(items) - 40} (см. сайт)")
     return "\n".join(lines)
 
 
