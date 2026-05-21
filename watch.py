@@ -110,24 +110,35 @@ def find_excursion_cards(soup: BeautifulSoup) -> Iterable[Tag]:
 
 def parse_card(card: Tag) -> list[dict]:
     """Return list of slot dicts found inside a single card."""
-    # Determine canonical link/slug + title
-    title = None
-    slug = None
-    url = None
+    # On um.mos.ru a card has two links to the same /excursions/<slug>/:
+    #   1) preview image + category tags ("Просвещаюсь с наследием" и т.п.)
+    #   2) clean text — the actual excursion title
+    # We need #2. Heuristic: pick the matching link that has NO <img> descendant.
+    candidates = []
     for a in card.find_all("a", href=True):
         if not EXC_HREF_RE.match(a["href"]):
             continue
         link_text = a.get_text(" ", strip=True)
         if not link_text:
             continue  # image-only link
-        title = link_text
-        slug = a["href"].strip("/").split("/")[-1]
-        url = f"https://um.mos.ru{a['href']}"
-        if not url.endswith("/"):
-            url += "/"
-        break
-    if not title or not slug:
+        candidates.append((a, link_text))
+
+    title_link = None
+    title = None
+    for a, text in candidates:
+        if not a.find("img"):
+            title_link = a
+            title = text
+            break
+    if title_link is None and candidates:
+        title_link, title = candidates[0]
+    if title_link is None:
         return []
+
+    slug = title_link["href"].strip("/").split("/")[-1]
+    url = f"https://um.mos.ru{title_link['href']}"
+    if not url.endswith("/"):
+        url += "/"
 
     text = card.get_text(" ", strip=True)
 
