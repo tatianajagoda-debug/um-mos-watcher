@@ -1,11 +1,13 @@
 {
-  "last_count": 5,
-  "last_run": "2026-05-22 06:01:21 UTC",
+  "last_count": 7,
+  "last_run": "2026-05-22 06:21:05 UTC",
   "seen": [
-    "ansambl-rogozhskoy-staroobryadcheskoy-obschiny|22.05.2026|13:00",
     "ansambl-rogozhskoy-staroobryadcheskoy-obschiny|24.05.2026|12:00",
-    "ansambl-rogozhskoy-staroobryadcheskoy-obschiny|24.05.2026|16:00",
     "ekskursiya-cerkov-uspeniya-presvyatoy-bogorodicy-v-veshnyakah-i-master-klass-maslyanaya-zhivopis-6a0d8f13ec391|22.05.2026|13:00",
+    "moskva-gilyarovskogo|22.05.2026|13:00",
+    "moskva-gilyarovskogo|24.05.2026|12:00",
+    "moskva-gilyarovskogo|24.05.2026|16:00",
+    "moskva-gilyarovskogo|25.05.2026|14:00",
     "pavilon-fizika-byvshiy-latviyskoy-ssr|24.05.2026|16:00"
   ]
 }
