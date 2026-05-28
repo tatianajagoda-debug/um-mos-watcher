@@ -1,13 +1,15 @@
 {
-  "last_count": 7,
-  "last_run": "2026-05-28 18:41:16 UTC",
+  "last_count": 9,
+  "last_run": "2026-05-28 19:01:37 UTC",
   "seen": [
+    "ansambl-donskogo-monastyrya|29.05.2026|10:30",
+    "ansambl-donskogo-monastyrya|29.05.2026|16:00",
+    "ansambl-donskogo-monastyrya|29.05.2026|17:00",
+    "ansambl-donskogo-monastyrya|30.05.2026|10:00",
+    "ansambl-donskogo-monastyrya|30.05.2026|17:00",
     "ansambl-usadby-kuskovo-dvorec|29.05.2026|10:30",
     "bolnica-im-n-a-alekseeva|30.05.2026|10:00",
-    "domik-petra-i-v-kolomenskom-6a16fbcf2a58e|29.05.2026|10:30",
     "domik-petra-i-v-kolomenskom-6a16fbcf2a58e|29.05.2026|16:00",
-    "domik-petra-i-v-kolomenskom-6a16fbcf2a58e|29.05.2026|17:00",
-    "domik-petra-i-v-kolomenskom-6a16fbcf2a58e|30.05.2026|10:00",
     "gosudarev-dvor-v-kolomenskom-6a16fc44114a5|29.05.2026|17:00"
   ]
 }
